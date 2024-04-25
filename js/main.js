@@ -1,36 +1,22 @@
 const venta = JSON.parse(localStorage.getItem("venta")) || [];
 
-const pinturas = [
-    {
-        id: "Amarillo",
-        titulo: "212-Amarillo Sol",
-        precio: 15000,
-        pesoNeto: 1,
-        img: "./img/212-amarillosol.jpg",
-        stock: 100
-    },
-    {
-        id: "Rojo",
-        titulo: "351-Rojo Clasico",
-        precio: 18000,
-        pesoNeto: 1,
-        img: "./img/351-rojoclasico.jpg",
-        stock: 3
-    },
-    {
-        id: "Azul",
-        titulo: "411-Azul Reina",
-        precio: 20000,
-        pesoNeto: 1,
-        img: "./img/411-azulreina.jpg",
-        stock: 50
-    }
-];
+let pinturas = [];
+
+fetch("./js/pinturas.json")
+    .then(response => response.json())
+    .then(data => {
+        pinturas = data;
+        cargarPinturas(pinturas)
+    })
+
+
 
 const contenedorPinturas = document.querySelector("#pinturas");
 const sinVentas = document.querySelector("#sin-ventas");
 const ventaPinturas = document.querySelector("#venta-pinturas");
 const totalVendido = document.querySelector("#total-vendido");
+
+function cargarPinturas () {
 
 pinturas.forEach((pintura) => {
 
@@ -54,6 +40,10 @@ pinturas.forEach((pintura) => {
     div.append(button);
     contenedorPinturas.append(div);
 })
+}
+
+cargarPinturas();
+
 
 const actualizarVentas = () => {
     if (venta.length === 0) {

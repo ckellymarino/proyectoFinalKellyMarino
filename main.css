@@ -29,8 +29,8 @@
 }
 
 img {
-    max-width: 100%;
-    display: block;
+    width: 100%;
+    display: flex;
 }
 
 .imgbanner {
@@ -53,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--clr-black);
     color: var(--clr-white);
     padding-block: 1rem;
+    margin: 0 auto;
 }
 
 .main {
@@ -135,6 +136,17 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
+.venta-pinturas-finalizar {
+    border-radius: .75rem;
+    border: 0;
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
+    padding: .5rem;
+    margin-top: .5rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-accent);
+    transition: .2s;
+}
 .d-none {
     display: none;
 }
