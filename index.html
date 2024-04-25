@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintureria Aura</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="wrapper">
+            <h1 class="rainbow-title"> Pintureria Aura </h1>
+            <input type="text" placeholder="Buscar" id="busqueda">
+        </div>
+    </header>
+
+    <main class="main">
+        
+        <section class="imgbanner">
+            <img src="./img/banner.jpg" alt=""> 
+        </section>
+
+        <section class="wrapper">
+            <h2 class="titulo">Pinturas <i class="bi bi-paint-bucket"></i></h2> 
+            <div class="pinturas" id="pinturas">
+                <!-- JS -->
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <h2 class="titulo"> <i class="bi bi-cash-coin"></i> Ventas realizadas</h2>
+            <div class="venta">
+                <div id="sin-ventas">
+                    <h4>No vendiste nada este mes 🥺</h4>
+                </div>
+                <div class="venta-pinturas" id="venta-pinturas">
+                    <!-- JS -->
+                </div>
+                <div class="total-vendido">
+                    <h2>Total: <span id="total-vendido">$0</span></h2>
+                </div>
+            </div>
+            <button class="venta-pinturas-finalizar">Finalizar carga</button>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>Pintureria Aura &#174</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
