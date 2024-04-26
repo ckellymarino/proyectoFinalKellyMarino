@@ -2,26 +2,26 @@ const venta = JSON.parse(localStorage.getItem("venta")) || [];
 
 let pinturas = [];
 
-fetch("./js/pinturas.json")
-    .then(response => response.json())
-    .then(data => {
-        pinturas = data;
-        cargarPinturas(pinturas)
-    })
-
-
-
 const contenedorPinturas = document.querySelector("#pinturas");
 const sinVentas = document.querySelector("#sin-ventas");
 const ventaPinturas = document.querySelector("#venta-pinturas");
 const totalVendido = document.querySelector("#total-vendido");
 const botonFinalizar = document.querySelector("#venta-pinturas-finalizar")
 
-function cargarPinturas () {
+fetch("./js/pinturas.json")
+    .then(response => response.json())
+    .then(data => {
+        pinturas = data;
+        cargarPinturas(pinturas)
+    })
+    .catch(error => {
+        console.error("Error al cargar las pinturas:", error);
+    });
 
+function cargarPinturas(pinturasMostrar) {
+    contenedorPinturas.innerHTML = "";
 
-pinturas.forEach((pintura) => {
-
+pinturasMostrar.forEach((pintura) => {
     let div = document.createElement("div");
     div.classList.add("pintura");
     div.innerHTML = `
@@ -58,9 +58,6 @@ pinturas.forEach((pintura) => {
 })
 }
 
-cargarPinturas();
-
-
 const actualizarVentas = () => {
     if (venta.length === 0) {
         sinVentas.classList.remove("d-none");
@@ -85,23 +82,27 @@ const actualizarVentas = () => {
             button.innerText = "Vaciar";
             button.addEventListener("click", () => {
                 quitarVenta(pintura);
+                
+                Swal.fire({
+                    title: "Quitar todo lo cargado sobre este produto",
+                    text: "Estas seguro? Se va a borrar todo lo que cargaste",
+                    icon: "question"
+                });
+
                 Toastify({
-                    text: "\uF31D",
+                    text: "🥺",
                     duration: 3000,
-                    newWindow: true,
                     close: true,
                     gravity: "bottom",
                     position: "right",
                     stopOnFocus: true,
                     style: {
                     background: "linear-gradient(to right, #00b09b, #2ccb96)",
-                    borderRadius: "1rem"
+                    borderRadius: "1rem",
+                    fontSize: "2rem"
                     },
                     onClick: function(){} 
                     }).showToast();
-            
-
-
             })
 
             div.append(button);
@@ -125,7 +126,14 @@ const sumarAVenta = (pintura) => {
         }
         actualizarVentas();
     } else {
-        alert("No quedan más en stock!")
+        Swal.fire({
+            title: "Opss",
+            text: "No quedan mas en stock",
+            imageUrl: "./img/outOfStock.jpg",
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image"
+        });
     }
 }
 
@@ -147,12 +155,11 @@ actualizarVentas();
 
 const consulta = document.querySelector("#busqueda");
 
-consulta.addEventListener("consulta", () => {
-    const productosFiltrados = pinturas.filter((cargarPinturas) => pinturas.titulo.toLowerCase().includes(consulta.value.toLowerCase()));
-    pinturas(productosFiltrados);
-})
-
-
+consulta.addEventListener("input", () => {
+    const textoConsulta = consulta.value.toLowerCase();
+    const productosFiltrados = pinturas.filter((pintura) => pintura.titulo.toLowerCase().includes(textoConsulta));
+    cargarPinturas(productosFiltrados);
+});
 
 
 let buttonFinalizar = document.createElement("buttonFinalizar");
@@ -160,5 +167,14 @@ let buttonFinalizar = document.createElement("buttonFinalizar");
             buttonFinalizar.innerText = "Finalizar Carga";
             button.addEventListener("click", () => {
                 "Sigue así. Muchas gracias!";
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Todo ha sido cargado correctamente",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            
+            
             })
 
