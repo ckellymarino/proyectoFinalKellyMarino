@@ -19,6 +19,7 @@ const botonFinalizar = document.querySelector("#venta-pinturas-finalizar")
 
 function cargarPinturas () {
 
+
 pinturas.forEach((pintura) => {
 
     let div = document.createElement("div");
@@ -36,6 +37,20 @@ pinturas.forEach((pintura) => {
     button.innerText = "Unidad Vendida";
     button.addEventListener("click", () => {
         sumarAVenta(pintura);
+    Toastify({
+        text: "Vendiste una lata de pintura",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+        background: "linear-gradient(to right, #00b09b, #2ccb96)",
+        borderRadius: "1rem"
+        },
+        onClick: function(){} 
+        }).showToast();
     });
 
     div.append(button);
@@ -70,6 +85,23 @@ const actualizarVentas = () => {
             button.innerText = "Vaciar";
             button.addEventListener("click", () => {
                 quitarVenta(pintura);
+                Toastify({
+                    text: "\uF31D",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom",
+                    position: "right",
+                    stopOnFocus: true,
+                    style: {
+                    background: "linear-gradient(to right, #00b09b, #2ccb96)",
+                    borderRadius: "1rem"
+                    },
+                    onClick: function(){} 
+                    }).showToast();
+            
+
+
             })
 
             div.append(button);
@@ -112,6 +144,16 @@ const actualizarTotal = () => {
 }
 
 actualizarVentas();
+
+const consulta = document.querySelector("#busqueda");
+
+consulta.addEventListener("consulta", () => {
+    const productosFiltrados = pinturas.filter((cargarPinturas) => pinturas.titulo.toLowerCase().includes(consulta.value.toLowerCase()));
+    pinturas(productosFiltrados);
+})
+
+
+
 
 let buttonFinalizar = document.createElement("buttonFinalizar");
             buttonFinalizar.classList.add("venta-pinturas-finalizar");
