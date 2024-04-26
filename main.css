@@ -34,7 +34,7 @@ img {
 }
 
 .imgbanner {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: flex;
     position: relative;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
-.venta-pinturas-finalizar {
+.btn-Finalizar-Carga {
     border-radius: .75rem;
     border: 0;
     background-color: var(--clr-accent);

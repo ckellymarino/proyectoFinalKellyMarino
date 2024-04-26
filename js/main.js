@@ -15,6 +15,7 @@ const contenedorPinturas = document.querySelector("#pinturas");
 const sinVentas = document.querySelector("#sin-ventas");
 const ventaPinturas = document.querySelector("#venta-pinturas");
 const totalVendido = document.querySelector("#total-vendido");
+const botonFinalizar = document.querySelector("#venta-pinturas-finalizar")
 
 function cargarPinturas () {
 
@@ -111,3 +112,11 @@ const actualizarTotal = () => {
 }
 
 actualizarVentas();
+
+let buttonFinalizar = document.createElement("buttonFinalizar");
+            buttonFinalizar.classList.add("venta-pinturas-finalizar");
+            buttonFinalizar.innerText = "Finalizar Carga";
+            button.addEventListener("click", () => {
+                "Sigue así. Muchas gracias!";
+            })
+

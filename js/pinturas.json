@@ -3,7 +3,7 @@
         "id": "Amarillo",
         "titulo": "212-Amarillo Sol",
         "precio": 15000,
-        "pesoNeto:": 1,
+        "pesoNeto": 1,
         "img": "./img/212-amarillosol.jpg",
         "stock": 100
     },
@@ -11,7 +11,7 @@
         "id": "Rojo",
         "titulo": "351-Rojo Clasico",
         "precio": 18000,
-        "pesoNeto:": 1,
+        "pesoNeto": 1,
         "img": "./img/351-rojoclasico.jpg",
         "stock": 3
     },
@@ -19,7 +19,7 @@
         "id": "Azul",
         "titulo": "411-Azul Reina",
         "precio": 20000,
-        "pesoNeto:": 1,
+        "pesoNeto": 1,
         "img": "./img/411-azulreina.jpg",
         "stock": 50
     }
