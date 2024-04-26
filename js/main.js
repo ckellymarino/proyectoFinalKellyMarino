@@ -151,6 +151,29 @@ const actualizarTotal = () => {
     totalVendido.innerText = `$${total}`;
 }
 
+const buttonFinalizar = document.querySelector("#venta-pinturas-finalizar");
+    buttonFinalizar.classList.add("btn-Finalizar-Carga");
+    buttonFinalizar.innerText = "Finalizar Carga";
+    buttonFinalizar.addEventListener("click", finalizarCarga)
+        
+    function finalizarCarga () {
+        venta.length = 0;
+        localStorage.setItem("venta", JSON.stringify(venta));
+        
+        Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Todo ha sido cargado correctamente",
+        showConfirmButton: false,
+        timer: 1500
+        });
+
+        ventaPinturas.classList.add("d-none");
+        totalVendido.classList.add("d-none");
+    }
+
+    
+
 actualizarVentas();
 
 const consulta = document.querySelector("#busqueda");
@@ -161,20 +184,4 @@ consulta.addEventListener("input", () => {
     cargarPinturas(productosFiltrados);
 });
 
-
-let buttonFinalizar = document.createElement("buttonFinalizar");
-            buttonFinalizar.classList.add("venta-pinturas-finalizar");
-            buttonFinalizar.innerText = "Finalizar Carga";
-            button.addEventListener("click", () => {
-                "Sigue así. Muchas gracias!";
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Todo ha sido cargado correctamente",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            
-            
-            })
 

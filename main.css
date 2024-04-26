@@ -137,15 +137,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-Finalizar-Carga {
-    border-radius: .75rem;
+    border-radius: 1rem;
     border: 0;
     background-color: var(--clr-accent);
     color: var(--clr-white);
-    padding: .5rem;
-    margin-top: .5rem;
+    padding: 1rem;
+    margin-top: 1rem;
     cursor: pointer;
     border: 2px solid var(--clr-accent);
     transition: .2s;
+    font-size: medium;
 }
 .d-none {
     display: none;
